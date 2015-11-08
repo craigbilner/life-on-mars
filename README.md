@@ -27,7 +27,7 @@ sample input:
 
 one line for each robot with it's final co-ordinates and it's orientation separated by spaces. If the unit has been lost it is the last known location with the word "LOST"
 
-caveat - if a robot is lost, a follow robot will not make the same mistake and ignore the command
+caveat - if a robot is lost, a following robot will not make the same mistake and ignore the command
 
 sample output:
 

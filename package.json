@@ -6,7 +6,9 @@
   "scripts": {
     "test": "mocha ./lib/*.tests.js --compilers js:babel-core/register",
     "posttest": "npm run lint",
-    "lint": "eslint ./lib",
+    "lint": "npm run lint:lib && npm run lint:components",
+    "lint:lib": "eslint ./lib",
+    "lint:components": "eslint ./components",
     "build": "webpack",
     "build:watch": "webpack --watch"
   },

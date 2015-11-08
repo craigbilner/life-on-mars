@@ -10,12 +10,12 @@ export default class App extends Component {
     this.state = {
       robots: [],
       result: [],
-    }
+    };
   }
 
   getCompStyle() {
     return {
-      color: 'green'
+      color: 'green',
     };
   }
 
@@ -29,7 +29,7 @@ export default class App extends Component {
       height: 300,
       fontSize: '2rem',
       outline: 'none',
-    }
+    };
   }
 
   getButtonStyle() {
@@ -42,21 +42,21 @@ export default class App extends Component {
       marginRight: -5,
       outline: 'none',
       cursor: 'pointer',
-    }
+    };
   }
 
   getListStyle() {
     return {
       padding: 0,
       margin: 0,
-      fontSize: '2rem'
+      fontSize: '2rem',
     };
   }
 
   getLabelStyle() {
     return {
       fontSize: '2rem',
-      marginBottom: '1rem'
+      marginBottom: '1rem',
     };
   }
 
@@ -65,7 +65,7 @@ export default class App extends Component {
 
     this.setState({
       surfaceDimensions,
-      robots: robots.filter(line => line)
+      robots: robots.filter(line => line),
     });
   }
 
@@ -73,7 +73,7 @@ export default class App extends Component {
     const [x, y] = this.state.surfaceDimensions.split(' ');
     const surface = createSurface({
       x: parseInt(x, 10),
-      y: parseInt(y, 10)
+      y: parseInt(y, 10),
     });
 
     const control = missionControl({
@@ -86,7 +86,7 @@ export default class App extends Component {
 
     const mappedRobots = this.state.robots.reduce((robotList, line, indx) => {
       const newList = robotList.slice(0);
-      const isPosition = indx % 2 == 0;
+      const isPosition = indx % 2 === 0;
 
       if (isPosition) {
         const [origX, origY, origOrient] = line.split(' ');
@@ -106,14 +106,12 @@ export default class App extends Component {
     const processedRobots = control(mappedRobots);
     const result = Object.keys(processedRobots).map(key => {
       if (key !== 'scent') {
-        return processedRobots[key]
+        return processedRobots[key];
       }
     }).filter(robot => robot);
 
-    console.log(result);
-
     this.setState({
-      result
+      result,
     });
   }
 
@@ -138,7 +136,7 @@ export default class App extends Component {
               curX,
               curY,
               curOrient,
-              isLost
+              isLost,
               }) => {
               const lostText = isLost ? 'LOST' : '';
               const content = `${curX} ${curY} ${curOrient} ${lostText}`;
@@ -153,4 +151,4 @@ export default class App extends Component {
       </div>
     );
   }
-};
+}

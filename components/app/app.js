@@ -81,7 +81,7 @@ export default class App extends Component {
           origY: parseInt(origY, 10),
           origOrient,
         });
-      } else if (robotList[robotList.length - 1]) {
+      } else {
         robotList[robotList.length - 1].instructions = line;
       }
 
@@ -90,8 +90,12 @@ export default class App extends Component {
 
     const processedRobots = control(mappedRobots);
     const result = Object.keys(processedRobots).map(key => {
-      return processedRobots[key];
-    });
+      if (key !== 'scent') {
+        return processedRobots[key]
+      }
+    }).filter(robot => robot);
+
+    console.log(result);
 
     this.setState({
       result
@@ -105,9 +109,12 @@ export default class App extends Component {
         <button style={this.getButtonStyle()} onClick={this.handleClick.bind(this)}>RUN</button>
         <ul>
           {
-            this.state.result.map(({ curX, curY, curOrient }) => {
+            this.state.result.map(({ id, curX, curY, curOrient, isLost }) => {
+              const content = `${curX} ${curY} ${curOrient} ${isLost ? 'LOST' : ''}`;
               return (
-                <div>{`${curX} ${curY} ${curOrient}`}</div>
+                <div key={id}>
+                  {content}
+                </div>
               );
             })
           }

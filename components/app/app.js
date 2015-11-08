@@ -27,7 +27,7 @@ export default class App extends Component {
       backgroundColor: 'black',
       width: '100%',
       height: 300,
-      fontSize: '3rem',
+      fontSize: '2rem',
       outline: 'none',
     }
   }
@@ -43,6 +43,21 @@ export default class App extends Component {
       outline: 'none',
       cursor: 'pointer',
     }
+  }
+
+  getListStyle() {
+    return {
+      padding: 0,
+      margin: 0,
+      fontSize: '2rem'
+    };
+  }
+
+  getLabelStyle() {
+    return {
+      fontSize: '2rem',
+      marginBottom: '1rem'
+    };
   }
 
   handleChange(evt) {
@@ -105,12 +120,28 @@ export default class App extends Component {
   render() {
     return (
       <div style={this.getCompStyle()}>
-        <textarea style={this.getTextAreaStyle()} onChange={this.handleChange.bind(this)}></textarea>
-        <button style={this.getButtonStyle()} onClick={this.handleClick.bind(this)}>RUN</button>
-        <ul>
+        <div style={this.getLabelStyle()}>INPUT:</div>
+        <textarea
+          style={this.getTextAreaStyle()}
+          onChange={this.handleChange.bind(this)}
+          placeholder="Enter input here"
+        ></textarea>
+        <button
+          style={this.getButtonStyle()}
+          onClick={this.handleClick.bind(this)}>RUN
+        </button>
+        <div style={this.getLabelStyle()}>OUTPUT:</div>
+        <ul style={this.getListStyle()}>
           {
-            this.state.result.map(({ id, curX, curY, curOrient, isLost }) => {
-              const content = `${curX} ${curY} ${curOrient} ${isLost ? 'LOST' : ''}`;
+            this.state.result.map(({
+              id,
+              curX,
+              curY,
+              curOrient,
+              isLost
+              }) => {
+              const lostText = isLost ? 'LOST' : '';
+              const content = `${curX} ${curY} ${curOrient} ${lostText}`;
               return (
                 <div key={id}>
                   {content}

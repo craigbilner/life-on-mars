@@ -97,7 +97,7 @@ export default class App extends Component {
           origOrient,
         });
       } else {
-        robotList[robotList.length - 1].instructions = line;
+        robotList[robotList.length - 1].instructions = line.substr(0, 99);
       }
 
       return newList;

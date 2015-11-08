@@ -4,7 +4,8 @@
   "description": "Practicing TDD and FP with ES2015",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./lib/*.tests.js --compilers js:babel-core/register"
+    "test": "mocha ./lib/*.tests.js --compilers js:babel-core/register",
+    "posttest": "eslint ./lib"
   },
   "repository": {
     "type": "git",

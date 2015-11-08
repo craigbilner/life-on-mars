@@ -1,6 +1,6 @@
 # life on mars
 
-calculates the eventual position of the given robots on mars
+calculates the eventual position of the given robots on mars [demo](http://craigbilner.github.io/life-on-mars/)
 
 ## input syntax
 
@@ -26,6 +26,8 @@ sample input:
 ## output syntax
 
 one line for each robot with it's final co-ordinates and it's orientation separated by spaces. If the unit has been lost it is the last known location with the word "LOST"
+
+caveat - if a robot is lost, a follow robot will not make the same mistake and ignore the command
 
 sample output:
 
